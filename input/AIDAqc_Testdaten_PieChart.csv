@@ -1,0 +1,23 @@
+﻿,Repository,Species,Scanner,Sequences,Data format,Sample (n)
+1,Aswendt,mouse,"9.4T Bruker mouse cryocoil and surface coil,Gradient: B-GA12SHP (660 mT/m and slew rates up to 4570 T/m/s) ","T2w, rs-fMRI, DWI",Bruker,32
+2,Boehm-Sturm,mouse,"7T Bruker,20mm quadVolres","T2w, DWI",Bruker,27
+,Carnevale,mouse,7T,"T2w, DWI",Bruker,20
+3,Franx,rat,"9.4T Varian/Agilent,80 mm diameter Helmholtz coil excitation,15 mm inductively coupled surface coil receive,205_120_HD gradient (400 mT/m)","T2w, DWI, T1w",NIfTI,722
+4,Hekmatyar,hamster,"7T Bruker Biospec 70/20,2x2 1H Rat  surface array coil (400 mT/mm 12 cm inner diameter)","T2w, rs-fMRI",NIfTI,10
+6,Kurniawan,mouse,"Bruker Biospec 16.4T 89 mm vertical microimaging,Avance II,micro 2.5 gradient (max 1.5T/m using Great 60 gradient amplifier),M2M Imaging (Brisbane,Australia) SAW 20 mm mouse head coil  ","T2w, DWI",Bruker,168
+7,Micotti,mouse,"7T Bruker Biospec 70/30,AVANCE III electronic,gradient set BGA12SL. 1H RF circularly polarized 72 mm volume coil for transmission and 1H receive-only mouse  quadrature surface coil for reception","T2w, DWI",Bruker,21
+8,Muñoz-Moreno,rabbit,"7T Bruker Biospec 70/30 horizontal animal scanner (400 mT/m,12 cm inner diameter) ","T1w, DWI",NIfTI,24
+9,Brinton,mouse,7T Bruker Biospec 70/20 and Bruker 300 1H 2x2 mouse  surface array or 300 1H 2x2 rat  surface array,"T2w, DWI",NIfTI,20
+10,Ramos-Cabrer,mouse,"11.7T Burker Biospac USR 117/16 with Advance III electronics and BGA-9S gradient insert (750 mT/m strength,and 6600 T/m/s slew rate). Bruker’s 500 1H RF circularly polarized 72 mm volume coil for transmission and Bruker’s RF 500 1H – Mouse   SUC surface coil OR Neoos Biotech’s mouse  surface coil,for reception ","T2w, DWI, rs-fMRI",Bruker,69
+11,Reichardt,mouse,9.4T,T2w,Bruker,10
+12,Rivera-Olvera,mouse,11.7T,"T2w, DWI, rs-fMRI",Bruker,20
+13,Sta Maria,mouse,"7T PET-MR system (MR Solutions Ltd,Guildford,UK),bore size: ~ 24 cm,gradient strength: 600 mT/m,coil: 20 mm inner diameter,18 mm length,quadrature birdcage","T2w, DWI",NIfTI,17
+14,Selim,mouse,7T cryocoil ,"T2w, T1w, DWI",Bruker,20
+14,Selim,rat,7T cryocoil ,"T2w, T1w, DWI",Bruker,30
+15,Soria,rat,"7T Bruker Biospec 70/30 horizontal animal scanner (400 mT/m,12 cm inner diameter),1H 2x2 rat  surface array","T2w, rs-fMRI",NIfTI,24
+16,Van Leeuwen,mouse,"9.4T Varian/Agilent,quadrature birdcage with ID mm,115_60_HD gradient (1000 mT/m)","T2w, DWI",NIfTI,131
+17,Vrooman,mouse,11.7T surface coil T2w TurboRARE/rs-fMRI,"T2w, rs-fMRI",NIfTI,24
+18,Wenk,mouse,"9.4T Bruker Biospec USR 94/20,  B-GA12SHP (660 mT/m and slew rates up to 4570 T/m/s) ;  Mouse with Array coil + 112/086 volume resonator; Gerbil with single-loop coil ID15 + 112/086 volume resonator; Rat with 075/40 volume resonator","T2w, rs-fMRI, DWI",Bruker,46
+18,Wenk,rat,"9.4T Bruker Biospec USR 94/20,  B-GA12SHP (660 mT/m and slew rates up to 4570 T/m/s) ;  Mouse with Array coil + 112/086 volume resonator; Gerbil with single-loop coil ID15 + 112/086 volume resonator; Rat with 075/40 volume resonator","T2w, rs-fMRI, DWI",Bruker,32
+18,Wenk,gerbil,"9.4T Bruker Biospec USR 94/20,  B-GA12SHP (660 mT/m and slew rates up to 4570 T/m/s) ;  Mouse with Array coil + 112/086 volume resonator; Gerbil with single-loop coil ID15 + 112/086 volume resonator; Rat with 075/40 volume resonator","T2w, rs-fMRI, DWI",Bruker,25
+19,Longo,mouse,"7T MicroImaging Bruker Avance III,1H 30mm TX/RX body volume coil","T2w, DWI",Bruker,20
