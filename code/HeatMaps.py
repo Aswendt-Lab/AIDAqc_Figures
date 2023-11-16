@@ -6,9 +6,9 @@ import matplotlib.ticker as ticker
 
 # Load your Excel file into a Pandas DataFrame
 #excel_file = r"C:\Users\aswen\Desktop\Code\2023_Kalantari_AIDAqc\outputs\files_4figs\Kappa_and_F1Score_results.xlsx"
-excel_file = r"C:\Users\arefk\OneDrive\Desktop\Projects\2023_Kalantari_AIDAqc\outputs\files_4figs\Kappa_and_F1Score_resultsTemp.xlsx"
+excel_file = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input\Kappa_and_F1Score_resultsTemp.csv"
 
-df = pd.read_excel(excel_file)
+df = pd.read_csv(excel_file)
 
 # Set the user-defined threshold value
 user_threshold = 1  # Replace with the user-set threshold value

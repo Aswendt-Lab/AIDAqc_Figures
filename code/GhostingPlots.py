@@ -18,7 +18,7 @@ font_properties2 = {'family': 'Times New Roman', 'size': 8}
 cm = 1/2.54  # centimeters in inches
 
 # Create the first plot (No ghost)
-fig1, ax1 = plt.subplots(figsize=(4.5*cm, 4.91*cm), dpi=300)
+fig1, ax1 = plt.subplots(figsize=(5.2*cm, 4.91*cm), dpi=300)
 ax1.plot(df['Shift (Voxel)'], df['No motion'], label='No ghost', linewidth=1, color='red')
 ax1.set_xlabel('Shift (Voxel)', **font_properties)
 ax1.set_ylabel('Mutual Information (a.u)', **font_properties)
@@ -43,7 +43,7 @@ ax1.yaxis.grid(True, linestyle='-', which='major', color='gray', linewidth=0)
 ax1.yaxis.grid(True, linestyle='--', which='minor', color='gray', linewidth=0)        
 plt.tight_layout()
 # Create the second plot (Ghost)
-fig2, ax2 = plt.subplots(figsize=(4.5*cm, 4.91*cm), dpi=300)
+fig2, ax2 = plt.subplots(figsize=(5.2*cm, 4.91*cm), dpi=300)
 ax2.plot(df['Shift (Voxel)'], df['Severe motion'], label='Ghost', linewidth=1, color='blue')
 ax2.set_xlabel('Shift (Voxel)', **font_properties)
 ax2.set_ylabel('Mutual Information (a.u)', **font_properties)

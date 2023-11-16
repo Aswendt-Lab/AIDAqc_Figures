@@ -15,9 +15,8 @@ from statsmodels.stats.inter_rater import aggregate_raters
 from ConfusionMatrix_getter import *
 
 #path = r"C:\Users\aswen\Desktop\Code\Validation\*/"
-path = r"C:\Users\arefk\OneDrive\Desktop\Projects\Validation\*/"
-List_folders = glob.glob(path)
-
+path = r"C:\Users\aswen\Desktop\Code\Validation_Chang\*"
+List_folders = [item for item in glob.glob(path) if os.path.isdir(item)]
 Result = []
 
 Sequence = ["anatomical","structural","functional"]
@@ -52,7 +51,7 @@ for v in Voting_threshold:
             ax.set_yticklabels(['bad', 'good'], fontname='Times New Roman')
             plt.show()
 ResultD = pd.DataFrame(Result)  
-ResultD.to_excel(r"C:\Users\arefk\OneDrive\Desktop\Projects\2023_Kalantari_AIDAqc\outputs\files_4figs\Kappa_and_F1Score_resultsTemp.xlsx")  
+ResultD.to_csv(r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input\Kappa_and_F1Score_resultsTemp.csv")
 #%% All together
 
 import glob

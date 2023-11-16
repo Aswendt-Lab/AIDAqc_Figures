@@ -175,7 +175,7 @@ import os
 
 cm = 1/2.54  # centimeters in inches
 # Specify the path to your Excel file
-excel_file_path = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input\combined_data_anat.csv"
+excel_file_path = r"C:\Users\arefk\OneDrive\Desktop\Projects\2023_Kalantari_AIDAqc\outputs\files_4figs\combined_data_anat.csv"
 plt.figure(figsize=(10*cm,10*cm),dpi=300)
 # Read the data into a pandas DataFrame
 df = pd.read_csv(excel_file_path)

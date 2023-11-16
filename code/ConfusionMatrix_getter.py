@@ -31,6 +31,9 @@ def calculate_confusion_matrix(path, Sequence, Voting_threshold):
     aidaqc_voting = pd.concat(dataframes, ignore_index=True)
     
     # Step 3: Filter rows based on the "majority vote" column
+    MM = aidaqc_voting["Voting outliers (from 5)"].max()
+    threshold_qc_adaptive = MM -1
+    
     threshold = Voting_threshold
     aidaqc_voting_thresolded = aidaqc_voting[aidaqc_voting["Voting outliers (from 5)"] >= threshold]
     S = Sequence
@@ -71,17 +74,26 @@ def calculate_confusion_matrix(path, Sequence, Voting_threshold):
         Errors.append(path + Sequence)
         kappa = np.nan
 
-    
-    
+       
     manual_voting['MajorityVoteMR'] = manual_voting.iloc[:, 1:].sum(axis=1)
     manual_voting_thresholded = manual_voting[manual_voting["MajorityVoteMR"] >= threshold]
     
     #Separate the new_df DataFrame based on specific prefixes
     manual_voting_thresholded_afs = manual_voting_thresholded[manual_voting_thresholded['manual_slice_inspection'].str.startswith(S)]
     aidaqc_voting_thresolded_afs = aidaqc_voting_thresolded[aidaqc_voting_thresolded['corresponding_img'].str.startswith(S)] 
+    # Define a custom function to remove the '_number.png' suffix
+    
+    def remove_suffix(path):
+        parts = path.split('_')
+        return '_'.join(parts[:-1]) + '.png'
+    
+    manual_voting_thresholded_afs['manual_slice_inspection'] = manual_voting_thresholded_afs['manual_slice_inspection'].apply(remove_suffix)
+    aidaqc_voting_thresolded_afs['corresponding_img'] = aidaqc_voting_thresolded_afs['corresponding_img'].apply(remove_suffix)
+    
     
     
     temp_afs_all = manual_voting[manual_voting['manual_slice_inspection'].str.startswith(S)]
+    temp_afs_all["manual_slice_inspection"] = temp_afs_all["manual_slice_inspection"].apply(remove_suffix)
     count_afs_all = len(temp_afs_all)
     countqc_afs_bad = len(aidaqc_voting_thresolded_afs)
     countqc_afs_good = count_afs_all - countqc_afs_bad
@@ -150,6 +162,7 @@ def calculate_confusion_matrix(path, Sequence, Voting_threshold):
     
     if np.isnan(kappa) and f1_score == 0:
         f1_score=np.nan
+        recall = np.nan
     
     confusion_matrix = [[afs_percent_TP, afs_percent_FN],
                          [afs_percent_FP, afs_percent_TN]]
