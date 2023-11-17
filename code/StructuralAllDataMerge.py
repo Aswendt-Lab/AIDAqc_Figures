@@ -3,9 +3,9 @@ import glob
 import pandas as pd
 
 # Step 1: Define the starting path and file pattern
-start_path = r"C:\Users\arefk\OneDrive\Desktop\Projects\Validation"
-file_pattern = '*structu*.csv'
-
+# Step 1: Define the starting path and file pattern
+start_path =  r"C:\Users\aswen\Desktop\Code\Validation3"
+file_pattern = '*diff*.csv'
 # Step 2: Find all matching CSV files in the specified directory and its subdirectories
 csv_files = glob.glob(os.path.join(start_path, '**', file_pattern), recursive=True)
 
@@ -18,7 +18,7 @@ for csv_file in csv_files:
         df = pd.read_csv(csv_file)
         selected_columns = ["FileAddress", "SNR Chang", "SNR Normal", "Displacement factor (std of Mutual information)", "Goasting"]
         df = df[selected_columns]
-        
+        df["dataset"] = csv_file.split(os.sep)[-3]
         # Concatenate the current DataFrame with the combined DataFrame
         combined_df = pd.concat([combined_df, df], ignore_index=True)
     except Exception as e:
@@ -43,5 +43,5 @@ print(f"Mean Displacement Factor: {mean_displacement_factor}")
 print(f"Standard Deviation Displacement Factor: {std_displacement_factor}")
 
 # Optionally, you can save the combined DataFrame to a CSV file
-p = r"Z:\2023_Kalantari_AIDAqc\outputs\figs"
-combined_df.to_csv(os.path.join(p,'combined_data_struct.csv'), index=False)
+p = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input"
+combined_df.to_csv(os.path.join(p,'combined_data_diff.csv'), index=False)

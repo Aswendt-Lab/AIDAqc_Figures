@@ -12,7 +12,7 @@ cm = 1/2.54  # centimeters in inches
 # Specify the path to your Excel file
 # Read data from the CSV file
 script_dir = os.path.dirname(__file__)
-excel_file_path = os.path.join(script_dir, '..', 'input', 'combined_data_anatF.csv')
+excel_file_path = os.path.join(script_dir, '..', 'input', 'combined_data_anat.csv')
 out_path = os.path.join(script_dir, '..', 'figures')
 
 
@@ -31,7 +31,7 @@ def extract_number(dataset):
 
 df['sorting_key'] = df['dataset']#.apply(extract_number)
 df['SNR Chang'] = df['SNR Chang']#.apply(lambda x: np.power(10,x/20))
-df['SNR Normal'] = df['SNR Normal'].apply(lambda x: np.power(10,x/20))
+df['SNR Normal'] = df['SNR Normal']#.apply(lambda x: np.power(10,x/20))
 df = df.sort_values(by=["sorting_key"],ascending=True)
 
 

@@ -3,7 +3,7 @@ import glob
 import pandas as pd
 
 # Step 1: Define the starting path and file pattern
-start_path = r"C:\Users\aswen\Documents\Data\2023_Kalantari_AIDAqc\outputs\validation\QC_Chang"
+start_path =  r"C:\Users\aswen\Desktop\Code\Validation3"
 file_pattern = '*func*.csv'
 
 # Step 2: Find all matching CSV files in the specified directory and its subdirectories
@@ -18,7 +18,7 @@ for csv_file in csv_files:
         df = pd.read_csv(csv_file)
         selected_columns = ["FileAddress", "tSNR (Averaged Brain ROI)", "Displacement factor (std of Mutual information)", "Goasting"]
         df = df[selected_columns]
-        
+        df["dataset"] = csv_file.split(os.sep)[-3]
         # Concatenate the current DataFrame with the combined DataFrame
         combined_df = pd.concat([combined_df, df], ignore_index=True)
     except Exception as e:
@@ -47,5 +47,5 @@ print(f"Minimum Displacement Factor: {min_displacement_factor}")
 print(f"Maximum Displacement Factor: {max_displacement_factor}")
 
 # Optionally, you can save the combined DataFrame to a CSV file
-p = r"Z:\2023_Kalantari_AIDAqc\outputs\figs"
+p = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input"
 combined_df.to_csv(os.path.join(p,'combined_data_func.csv'), index=False)

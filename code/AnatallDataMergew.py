@@ -46,4 +46,4 @@ print(combined_df)
 
 # Optionally, you can save the combined DataFrame to a CSV file
 p = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input"
-combined_df.to_csv(os.path.join(p,'combined_data_anatF.csv'), index=False)
+combined_df.to_csv(os.path.join(p,'combined_data_anat.csv'), index=False)
