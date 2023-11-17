@@ -81,15 +81,11 @@ legend.get_title().set_fontfamily('Times New Roman')
 for text in legend.get_texts():
     text.set_fontfamily('Times New Roman')
 
-# Show the plot
-plt.show()
+fig_path_png = os.path.join(out_path, 'StandardVSchangtogether.png')
+fig_path_svg = os.path.join(out_path, 'StandardVSchangtogether.svg')
 
-# Save figures as PNG and SVG with 300 dpi
-fig_path_png = os.path.join(out_path, 'MutualInformation.png')
-fig_path_svg = os.path.join(out_path, 'MutualInformation.svg')
-
-fig.savefig(fig_path_png, format='png', bbox_inches='tight')
-fig.savefig(fig_path_svg, format='svg', bbox_inches='tight')
+plt.savefig(fig_path_png, format='png', bbox_inches='tight')
+plt.savefig(fig_path_svg, format='svg', bbox_inches='tight')
 
 # Show the plot
 plt.show()
