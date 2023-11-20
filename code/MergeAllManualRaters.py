@@ -65,6 +65,7 @@ def process_dataset(dataset_name):
             
             diff_image = ma_image_array - va_image_array
             is_same = np.sum(diff_image) == 0
+            print(is_same)
             
             result_row[va_row['validator_name']] = is_same
         
