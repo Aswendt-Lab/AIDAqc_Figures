@@ -74,6 +74,8 @@ ax.spines['top'].set_linewidth(0.5)  # Top border
 ax.spines['right'].set_linewidth(0.5)  # Right border
 ax.spines['bottom'].set_linewidth(0.5)  # Bottom border
 ax.spines['left'].set_linewidth(0.5)  # Left border
+ax.set_xlim(15,50)
+ax.set_ylim(10,50)
 
 # Move the legend outside the plot to the right side
 legend = plt.legend(title="Dataset", loc='center left', bbox_to_anchor=(1, 0.5), fontsize=8, handlelength=0.5)

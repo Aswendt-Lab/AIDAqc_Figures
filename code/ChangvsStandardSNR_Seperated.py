@@ -9,14 +9,14 @@ cm = 1/2.54  # centimeters in inches
 # Specify the path to your Excel file
 # Read data from the CSV file
 script_dir = os.path.dirname(__file__)
-excel_file_path = os.path.join(script_dir, '..', 'input', 'combined_data_anatF.csv')
+excel_file_path = os.path.join(script_dir, '..', 'input', 'combined_data_anat.csv')
 out_path = os.path.join(script_dir, '..', 'figures')
 
 # Read the data into a pandas DataFrame
 df = pd.read_csv(excel_file_path)
 
 # Set seaborn style
-sns.set_style('white')
+sns.set_style('ticks')
 
 # Create a list to store correlation and p-value for each dataset
 correlation_list = []
@@ -55,11 +55,12 @@ for i, dataset in enumerate(datasets):
 
     # Create a scatter plot for the current dataset
     ax = sns.scatterplot(data=df_subset, x='SNR Chang', y='SNR Normal', s=7, ax=axes[i],color="red")
-    ax.set_title(f"{dataset}", weight='bold', fontsize=11, fontname='Times New Roman')
+    ax.set_title(f"{dataset}", weight='bold', fontsize=8, fontname='Times New Roman')
+    
 
     # Set title and labels including the correlation and p-value
-    ax.set_xlabel('SNR-Chang (db)', fontname='Times New Roman')
-    ax.set_ylabel('SNR-Standard (db)', fontname='Times New Roman')
+    ax.set_xlabel('SNR-Chang (db)', fontname='Times New Roman',fontsize=8)
+    ax.set_ylabel('SNR-Standard (db)', fontname='Times New Roman',fontsize=8)
     for tick in ax.get_xticklabels():
         tick.set_fontname("Times New Roman")
         tick.set_fontsize(8)
@@ -73,11 +74,18 @@ for i, dataset in enumerate(datasets):
     #ax.set_ylim(3.251536979292914, 43.47414376123412)
 
     # Remove borders
-    ax.spines['top'].set_linewidth(0)
-    ax.spines['right'].set_linewidth(0)
+    ax.spines['top'].set_linewidth(0.5)
+    ax.spines['right'].set_linewidth(0.5)
     ax.spines['bottom'].set_linewidth(0.5)
     ax.spines['left'].set_linewidth(0.5)
     
+
+# Show the plot
+fig_path_png = os.path.join(out_path, 'StandardVSchang_all.png')
+fig_path_svg = os.path.join(out_path, 'StandardVSchangall.svg')
+
+plt.savefig(fig_path_png, format='png', bbox_inches='tight')
+plt.savefig(fig_path_svg, format='svg', bbox_inches='tight')
 
 # Show the plot
 plt.show()
@@ -85,3 +93,5 @@ plt.show()
 # Print the correlation and p-value for each dataset
 for i, dataset in enumerate(datasets):
     print(f"{dataset} - Correlation: {correlation_list[i]}, p-value: {p_value_list[i]}")
+
+
