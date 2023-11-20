@@ -84,6 +84,9 @@ with concurrent.futures.ThreadPoolExecutor(max_cpus) as executor:
 # Concatenate the results into the final DataFrame
 result_df = pd.concat([pd.DataFrame(result_list) for result_list in results_list], ignore_index=True)
 
+# Optionally, you can save the combined DataFrame to a CSV file
+p = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input"
+result_df.to_csv(os.path.join(p,'results_df_to_check.csv'), index=False)
 # Display the result DataFrame
 print(result_df.head())
 
