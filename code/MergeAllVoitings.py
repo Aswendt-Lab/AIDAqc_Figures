@@ -25,8 +25,8 @@ combined_df1 = pd.DataFrame()
 for csv_file in csv_files:
     try:
         df = pd.read_csv(csv_file)
-        selected_columns = ["Pathes",	"sequence_name",	"corresponding_img",
-                            "sequence_name",	"One_class_SVM",
+        selected_columns = ["Pathes",	"corresponding_img"
+                            ,	"One_class_SVM",
                             "IsolationForest",	"LocalOutlierFactor",
                             " EllipticEnvelope",	"statistical_method",
                             "Voting outliers (from 5)"]
@@ -41,6 +41,7 @@ for csv_file in csv_files:
 
 
 combined_df = combined_df1
+combined_df["SequenceType"] = combined_df["corresponding_img"].str.split("_").str[0]
 # Step 5: Print the combined DataFrame
 print(combined_df)
 
