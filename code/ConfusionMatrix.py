@@ -1,11 +1,22 @@
 import pandas as pd
-from sklearn.metrics import confusion_matrix, precision_recall_fscore_support
+from sklearn.metrics import confusion_matrix, precision_recall_fscore_support,ConfusionMatrixDisplay
 import os
 from sklearn.metrics import precision_recall_curve
 import matplotlib.pyplot as plt
 # Load the CSV files
-human_voters_df = pd.read_csv(r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input\combined_Human_Voters_from_votings3_Final.csv")
-votings_df = pd.read_csv(r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input\combined_votings3.csv")
+
+
+
+# Read data from the CSV file
+script_dir = os.path.dirname(__file__)
+file_path = os.path.join(script_dir, '..', 'input')
+out_path = os.path.join(script_dir, '..', 'figures')
+
+
+
+
+human_voters_df = pd.read_csv(os.path.join(file_path,"combined_Human_Voters_from_votings3_Final.csv"))
+votings_df = pd.read_csv(os.path.join(file_path,"combined_votings3.csv"))
 C = 0
 
 # Create an empty DataFrame to store results
@@ -80,7 +91,6 @@ for dataset_name in human_voters_df['dataset_name'].unique():
                 # Calculate confusion matrix
                 try:
                     tn, fp, fn, tp = confusion_matrix(human_labels, voting_labels).ravel()
-                    
                     a = (tn, fp, fn, tp)
                 except ValueError:
                     print("exception for: " + sequence_name + " + " + dataset_name)
@@ -148,4 +158,4 @@ print(C)
 
 outpath = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\input"
 # Save the result DataFrame to a CSV file
-result_df.to_csv(os.path.join(outpath, 'Confusion_matrix_metrics.csv'), index=False)
+#result_df.to_csv(os.path.join(outpath, 'Confusion_matrix_metrics.csv'), index=False)

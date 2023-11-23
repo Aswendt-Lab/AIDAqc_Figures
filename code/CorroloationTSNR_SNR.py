@@ -113,7 +113,7 @@ ax.tick_params(axis='both', which='both', width=0.5, color='gray', length=2)
 fig_path_png = os.path.join(out_path, 'AnatVSFuncAllDataCorr.png')
 fig_path_svg = os.path.join(out_path, 'AnatVSFuncAllDataCorr.svg')
 
-fig.savefig(fig_path_png, format='png', bbox_inches='tight')
-fig.savefig(fig_path_svg, format='svg', bbox_inches='tight')
+#fig.savefig(fig_path_png, format='png', bbox_inches='tight')
+#fig.savefig(fig_path_svg, format='svg', bbox_inches='tight')
 
 plt.show()
