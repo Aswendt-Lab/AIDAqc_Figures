@@ -32,7 +32,7 @@ filtered_df.loc[filtered_df["sequence_name"] == "func","sequence_name"] = "Funct
 cm = 1/2.54  # centimeters in inches
 # Create two subplots for Kappa and F1 scores heatmaps
 fig, axes = plt.subplots(1, 1, figsize=(20*cm, 4*cm), dpi=300)
-#sns.set_style('whitegrid')
+sns.set_style('darkgrid')
 # Specify the font properties
 font_properties = fm.FontProperties(family='Times New Roman', size=8)
 font_properties2 = fm.FontProperties(family='Times New Roman', size=10)
@@ -77,13 +77,13 @@ output_path = out_path
 output_filename = "HeatMap_Recall_ManualRater4_AIDAqc1"
 
 # Save as SVG
-fig.savefig(f"{output_path}/{output_filename}.svg", format="svg")
+#fig.savefig(f"{output_path}/{output_filename}.svg", format="svg")
 
 # Save as PNG
-fig.savefig(f"{output_path}/{output_filename}.png", format="png")
+#fig.savefig(f"{output_path}/{output_filename}.png", format="png")
 
 plt.show()
-#%%
+#%% All Thresholds loops through
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt

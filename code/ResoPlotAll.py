@@ -17,7 +17,7 @@ def read_csv_files(files):
     for ff,file in enumerate(files):
         df = pd.read_csv(file)    
         # Extract the data type from the file name (assuming the file name contains "anatomical", "structural", or "functional")
-        data_type = "anatomical" if "anatomical" in file else ("structural" if "structural" in file else "functional")
+        data_type = "anatomical" if "anat" in file else ("structural" if "diff" in file else "functional")
         data_dict[ff] = {data_type:df} 
             
     return data_dict
@@ -36,11 +36,12 @@ def compare_and_plot(data, column_name, group_column):
     plt.show()
 
 #% List of CSV files for each data type
-Path = r"C:\Users\aswen\Documents\Data\2023_Kalantari_AIDAqc\outputs\validation\QC_Plot_VoxelSizesAll"
+#Path = r"C:\Users\aswen\Documents\Data\2023_Kalantari_AIDAqc\outputs\validation\QC_Plot_VoxelSizesAll"
+Path = r"C:\Users\aswen\Desktop\Code\Validation"
 
-anatomical_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_anatomical.csv"), recursive=True)
-structural_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_structural.csv"), recursive=True)
-functional_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_functional.csv"), recursive=True)
+anatomical_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_anat.csv"), recursive=True)
+structural_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_diff.csv"), recursive=True)
+functional_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_func.csv"), recursive=True)
 
 All_files = [anatomical_files,structural_files,functional_files]
 
@@ -137,8 +138,8 @@ for dd,data in enumerate(All_Data):
             y_label = ax.set_ylabel(ax.get_ylabel(), fontweight='bold',fontsize=9)
 
 # =============================================================================
-            ax.xaxis.grid(True, linestyle='-', which='major', color='gray', linewidth=0.5)
-            ax.xaxis.grid(True, linestyle='--', which='minor', color='gray', linewidth=0.5)
+            ax.xaxis.grid(True, linestyle='-', which='major', color='gray', linewidth=0)
+            ax.xaxis.grid(True, linestyle='--', which='minor', color='gray', linewidth=00)
 # 
             ax.yaxis.grid(True, linestyle='-', which='major', color='gray', linewidth=0.5)
             ax.yaxis.grid(True, linestyle='--', which='minor', color='gray', linewidth=0.5)        
@@ -149,5 +150,5 @@ for dd,data in enumerate(All_Data):
             ax.spines['left'].set_linewidth(0.5)  # Left border
             ax.tick_params(axis='both', which='both', width=0.5,color='gray',length=2)
             plt.xticks(ha='right')
-            #plt.savefig(os.path.join(Path,feature+"_"+All_type[dd]+".svg"), format='svg', bbox_inches='tight',transparent=False)
+            plt.savefig(os.path.join(Path,feature+"_"+All_type[dd]+".svg"), format='svg', bbox_inches='tight',transparent=False)
             plt.show()
