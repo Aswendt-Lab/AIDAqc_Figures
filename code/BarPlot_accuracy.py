@@ -35,42 +35,43 @@ filtered_df_random = df[(df['Thresold_Human_Voters'] == Thresold_Human_Voters_ra
                         & (df['sequence_name'] == "Anatomical")]
 
 # Set the user-defined thresholds to get desired values
-Thresold_Human_Voters_Good = 1  # Replace with the user-set threshold value
-Thresold_ML_Voters_Good = 3
+Thresold_Human_Voters_Good = 4  # Replace with the user-set threshold value
+Thresold_ML_Voters_Good = 1
 
 # Filter the DataFrame based on the user-set threshold
 filtered_df_Good = df[(df['Thresold_Human_Voters'] == Thresold_Human_Voters_Good) &
                       (df['Thresold_ML_Voters'] == Thresold_ML_Voters_Good) &
-                      (df['TP'] + df['FN'] > 0)]
+                      (df['TP'] + df['FN'] > 0) & (df['sequence_name'] == "Anatomical")]
 
 # Add Filter_Type column
-filtered_df_random['Filter_Type'] = 0
-filtered_df_Good['Filter_Type'] = 1
+filtered_df_random['Filter_Type'] = "random"
+filtered_df_Good['Filter_Type'] = "optimal"
 
 # Concatenate the two filtered dataframes
 concatenated_df = pd.concat([filtered_df_random, filtered_df_Good])
-custom_palette = ["#DBE3EF","#3A67B8"]
+custom_palette = ["#3A67B8","#DBE3EF"]
 # Create plot for Anatomical
 g = sns.catplot(
-    data=concatenated_df[concatenated_df['sequence_name'] == 'Anatomical'], kind="bar",
-    x="dataset_name", y="Sensitivity-Recall", hue="Filter_Type",
-    palette=custom_palette, alpha=1, height=5, aspect=(18/5)  # Adjust the height and aspect ratio
+    data=concatenated_df.sort_values(by="Sensitivity-Recall",ascending=False), kind="bar",
+    x="dataset_name", y="Sensitivity-Recall", hue="Filter_Type",hue_order=["optimal","random"],
+    palette=custom_palette, alpha=1, height=5, aspect=(18/5)  , legend = False # Adjust the height and aspect ratio
 )
 cm = 1/2.54
 
 # Customize the plot as needed
 g.set(title='Accuracy Comparison - Anatomical', xlabel='Dataset Name', ylabel='Accuracy')
 g.fig.set_dpi(300)  # Set DPI
-g.fig.set_size_inches(18*cm, 18*cm)  # Set size in inches
+g.fig.set_size_inches(18*cm, 5*cm)  # Set size in inches
 
 # Customize x-axis ticks
 plt.xticks(rotation=45)
-
+plt.xticks(ha='right')
 # Add borders to the top and right side of the plot
 sns.despine()
 
+plt.legend(loc='upper right',frameon=False)
 # Rename the legend
-g._legend.set_title('Threshold Type')
+
 plt.tight_layout()
 
 plt.show()
@@ -82,25 +83,25 @@ filtered_df_random = df[(df['Thresold_Human_Voters'] == Thresold_Human_Voters_ra
                         & (df['sequence_name'] == "Diffusion")]
 
 # Set the user-defined thresholds to get desired values
-Thresold_Human_Voters_Good = 1  # Replace with the user-set threshold value
-Thresold_ML_Voters_Good = 2
+Thresold_Human_Voters_Good = 2  # Replace with the user-set threshold value
+Thresold_ML_Voters_Good = 1
 sns.color_palette("light:b", as_cmap=True)
 # Filter the DataFrame based on the user-set threshold
 filtered_df_Good = df[(df['Thresold_Human_Voters'] == Thresold_Human_Voters_Good) &
                       (df['Thresold_ML_Voters'] == Thresold_ML_Voters_Good) &
-                      (df['TP'] + df['FN'] > 0)]
+                      (df['TP'] + df['FN'] > 0) & (df['sequence_name'] == "Diffusion")]
 
 # Add Filter_Type column
-filtered_df_random['Filter_Type'] = 0
-filtered_df_Good['Filter_Type'] = 1
+filtered_df_random['Filter_Type'] = "random"
+filtered_df_Good['Filter_Type'] = "optimal"
 
 # Concatenate the two filtered dataframes
 concatenated_df = pd.concat([filtered_df_random, filtered_df_Good])
-custom_palette = ["#F8E6DC","#F66900"]
+custom_palette = ["#F66900","#F8E6DC"]
 # Create plot for Diffusion
 g = sns.catplot(
-    data=concatenated_df[concatenated_df['sequence_name'] == 'Diffusion'], kind="bar",
-    x="dataset_name", y="Sen", hue="Filter_Type",
+    data=concatenated_df.sort_values(by="Sensitivity-Recall",ascending=False), kind="bar",
+    x="dataset_name", y="Sensitivity-Recall", hue="Filter_Type", legend = False,
     palette=custom_palette, alpha=.6, height=5, aspect=(18/5)  # Adjust the height and aspect ratio
 )
 # Customize the plot as needed
@@ -110,12 +111,13 @@ g.fig.set_size_inches(18*cm, 5*cm)  # Set size in inches
 
 # Customize x-axis ticks
 plt.xticks(rotation=45)
-
+plt.xticks(ha='right')
 # Add borders to the top and right side of the plot
-sns.despine()
+sns.despine(fig=None, ax=None, top=False, right=False, left=False, bottom=False, offset=None, trim=False)
 
 # Rename the legend
-g._legend.set_title('Threshold Type')
+
+plt.legend(loc='upper right',frameon=False)
 plt.tight_layout()
 
 plt.show()
@@ -127,26 +129,26 @@ filtered_df_random = df[(df['Thresold_Human_Voters'] == Thresold_Human_Voters_ra
                         & (df['sequence_name'] == "Functional")]
 
 # Set the user-defined thresholds to get desired values
-Thresold_Human_Voters_Good = 1  # Replace with the user-set threshold value
-Thresold_ML_Voters_Good = 2
+Thresold_Human_Voters_Good = 2  # Replace with the user-set threshold value
+Thresold_ML_Voters_Good = 1
 
 # Filter the DataFrame based on the user-set threshold
 filtered_df_Good = df[(df['Thresold_Human_Voters'] == Thresold_Human_Voters_Good) &
                       (df['Thresold_ML_Voters'] == Thresold_ML_Voters_Good) &
-                      (df['TP'] + df['FN'] > 0)]
+                      (df['TP'] + df['FN'] > 0) & (df['sequence_name'] == "Functional")]
 
 # Add Filter_Type column
-filtered_df_random['Filter_Type'] = 0
-filtered_df_Good['Filter_Type'] = 1
+filtered_df_random['Filter_Type'] = "random"
+filtered_df_Good['Filter_Type'] = "optimal"
 
 # Concatenate the two filtered dataframes
 concatenated_df = pd.concat([filtered_df_random, filtered_df_Good])
-
+custom_palette = ["#DDEEE1","#376D43"]
 # Create plot for Functional
 g = sns.catplot(
-    data=concatenated_df[concatenated_df['sequence_name'] == 'Functional'], kind="bar",
-    x="dataset_name", y="Sensitivity-Recall", hue="Filter_Type",
-    palette={0: "#DDEEE1", 1: "#376D43"}, alpha=.6, height=5, aspect=(18/5)  # Adjust the height and aspect ratio
+    data=concatenated_df.sort_values(by="Sensitivity-Recall",ascending=False), kind="bar",
+    x="dataset_name", y="Sensitivity-Recall", hue="Filter_Type", legend = False,
+    palette=custom_palette, alpha=.6, height=5, aspect=(18/5)  # Adjust the height and aspect ratio
 )
 
 # Customize the plot as needed
@@ -156,12 +158,13 @@ g.fig.set_size_inches(18*cm, 5*cm)  # Set size in inches
 
 # Customize x-axis ticks
 plt.xticks(rotation=45)
-
+plt.xticks(ha='right')
 # Add borders to the top and right side of the plot
 sns.despine()
 
 # Rename the legend
-g._legend.set_title('Threshold Type')
+
+plt.legend(loc='upper right',frameon=False)
 plt.tight_layout()
 
 
