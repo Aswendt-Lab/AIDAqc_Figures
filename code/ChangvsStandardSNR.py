@@ -86,8 +86,8 @@ for text in legend.get_texts():
 fig_path_png = os.path.join(out_path, 'StandardVSchangtogether.png')
 fig_path_svg = os.path.join(out_path, 'StandardVSchangtogether.svg')
 
-plt.savefig(fig_path_png, format='png', bbox_inches='tight')
-plt.savefig(fig_path_svg, format='svg', bbox_inches='tight')
+#plt.savefig(fig_path_png, format='png', bbox_inches='tight')
+#plt.savefig(fig_path_svg, format='svg', bbox_inches='tight')
 
 # Show the plot
 plt.show()

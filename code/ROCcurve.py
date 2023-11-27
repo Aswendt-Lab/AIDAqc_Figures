@@ -36,7 +36,7 @@ def print_statistics(data, x, y, hue):
         print("\n")
 
 # Create a 2x3 subplot
-fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(19*cm, 8*cm))
+fig, axes = plt.subplots(nrows=2, ncols=3, figsize=(19*cm, 8*cm),dpi=300)
 
 # Plot for "Accuracy" vs. "Thresold_Human_Voters"
 sns.lineplot(
@@ -45,7 +45,7 @@ sns.lineplot(
     dashes=False, markers=True, ci=30,
     ax=axes[0, 0]
 )
-axes[0, 0].set_xlabel("Manual-rater Voting Threshold", fontsize=8)
+axes[0, 0].set_xlabel("Voting Threshold: Manual-rater", fontsize=8)
 axes[0, 0].set_ylabel("Accuracy", fontsize=8)
 axes[0, 0].yaxis.set_major_locator(MaxNLocator(nbins=5))  # Set major y ticks
 axes[0, 0].get_legend().remove()
@@ -59,7 +59,7 @@ sns.lineplot(
     dashes=False, markers=True, ci=30,
     ax=axes[0, 1]
 )
-axes[0, 1].set_xlabel("Manual-rater Voting Threshold", fontsize=8)
+axes[0, 1].set_xlabel("Voting Threshold: Manual-rater", fontsize=8)
 axes[0, 1].set_ylabel("Specificity", fontsize=8)
 axes[0, 1].get_legend().remove()  # Remove legend for subsequent plots
 axes[0, 1].yaxis.set_major_locator(MaxNLocator(nbins=5))  # Set major y ticks
@@ -73,7 +73,7 @@ sns.lineplot(
     dashes=False, markers=True, ci=30,
     ax=axes[0, 2]
 )
-axes[0, 2].set_xlabel("Manual-rater Voting Threshold", fontsize=8)
+axes[0, 2].set_xlabel("Voting Threshold: Manual-rater", fontsize=8)
 axes[0, 2].set_ylabel("Sensitivity", fontsize=8)
 axes[0, 2].get_legend().remove()  # Remove legend for subsequent plots
 axes[0, 2].yaxis.set_major_locator(MaxNLocator(nbins=5))  # Set major y ticks
@@ -87,7 +87,7 @@ sns.lineplot(
     dashes=False, markers=True, ci=30,
     ax=axes[1, 0]
 )
-axes[1, 0].set_xlabel("AIDAqc Voting Threshold", fontsize=8)
+axes[1, 0].set_xlabel("Voting Threshold: AIDAqc", fontsize=8)
 axes[1, 0].set_ylabel("Accuracy", fontsize=8)
 axes[1, 0].yaxis.set_major_locator(MaxNLocator(nbins=5))  # Set major y ticks
 axes[1, 0].get_legend().remove()
@@ -101,7 +101,7 @@ sns.lineplot(
     dashes=False, markers=True, ci=30,
     ax=axes[1, 1]
 )
-axes[1, 1].set_xlabel("AIDAqc Voting Threshold", fontsize=8)
+axes[1, 1].set_xlabel("Voting Threshold: AIDAqc", fontsize=8)
 axes[1, 1].set_ylabel("Specificity", fontsize=8)
 axes[1, 1].get_legend().remove()  # Remove legend for subsequent plots
 axes[1, 1].yaxis.set_major_locator(MaxNLocator(nbins=5))  # Set major y ticks
@@ -115,7 +115,7 @@ sns.lineplot(
     dashes=False, markers=True, ci=30,
     ax=axes[1, 2]
 )
-axes[1, 2].set_xlabel("AIDAqc Voting Threshold", fontsize=8)
+axes[1, 2].set_xlabel("Voting Threshold: AIDAqc", fontsize=8)
 axes[1, 2].set_ylabel("Sensitivity", fontsize=8)
 #axes[1, 2].get_legend().remove()  # Add legend for the last plot only
 axes[1, 2].yaxis.set_major_locator(MaxNLocator(nbins=5))  # Set major y ticks
@@ -134,6 +134,8 @@ for ax in axes.flatten():
     ax.spines['right'].set_linewidth(0.5)
     ax.spines['bottom'].set_linewidth(0.5)
     ax.spines['left'].set_linewidth(0.5)
+    ax.tick_params(direction='out', length=4, width=1,
+                grid_alpha=0.5)
 
 # Adjust layout manually
 plt.tight_layout()
