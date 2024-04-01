@@ -24,7 +24,7 @@ ax.plot(df['Shift (Voxel)'], df['Severe motion'], label='Severe motion', linewid
 ax.plot(df['Shift (Voxel)'], df['No motion'], label='No motion', linewidth=1, color='blue')  # Adjust the line width
 
 # Set axis labels
-ax.set_xlabel('Shift (Voxel)', **font_properties)
+ax.set_xlabel('Time Points (s)', **font_properties)
 ax.set_ylabel('Mutual information (a.u)', **font_properties)
 
 # Set axis ticks font and number of ticks
