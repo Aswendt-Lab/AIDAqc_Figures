@@ -17,8 +17,8 @@ def read_csv_files(files):
     data_dict = {}
     for ff,file in enumerate(files):
         df = pd.read_csv(file)    
-        # Extract the data type from the file name (assuming the file name contains "anatomical", "structural", or "functional")
-        data_type = "anatomical" if "anatomical" in file else ("structural" if "structural" in file else "functional")
+        # Extract the data type from the file name (assuming the file name contains "anat", "diff", or "func")
+        data_type = "anat" if "anat" in file else ("diff" if "diff" in file else "func")
         data_dict[ff] = {data_type:df} 
             
     return data_dict
@@ -37,21 +37,21 @@ def compare_and_plot(data, column_name, group_column):
     plt.show()
 
 #% List of CSV files for each data type
-Path = r"C:\Users\aswen\Desktop\Code\Validation2"
+Path = r"C:\Users\arefk\Desktop\Projects\AIDAqcOutput_of_all_Datasets"
 
-anatomical_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_anatomical.csv"), recursive=True)
-structural_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_structural.csv"), recursive=True)
-functional_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_functional.csv"), recursive=True)
+anat_files = [file for file in glob.glob(os.path.join(Path, "*/*/*caculated_features_anat.csv"), recursive=True) if "m_Rei" not in file and "7_m_Lo" not in file]
+diff_files = [file for file in glob.glob(os.path.join(Path, "*/*/*caculated_features_diff.csv"), recursive=True) if "m_Rei" not in file and "7_m_Lo" not in file]
+func_files = [file for file in glob.glob(os.path.join(Path, "*/*/*caculated_features_func.csv"), recursive=True) if "m_Rei" not in file and "7_m_Lo" not in file]
 
-All_files = [anatomical_files,structural_files,functional_files]
+All_files = [anat_files,diff_files,func_files]
 
 # Read the CSV files and store them in dictionaries
-anatomical_data = read_csv_files(anatomical_files)
-structural_data = read_csv_files(structural_files)
-functional_data = read_csv_files(functional_files)
-All_Data = [anatomical_data,structural_data,functional_data]
+anat_data = read_csv_files(anat_files)
+diff_data = read_csv_files(diff_files)
+func_data = read_csv_files(func_files)
+All_Data = [anat_data,diff_data,func_data]
 
-All_type = ["anatomical","structural","functional"]
+All_type = ["anat","diff","func"]
 #% data statistisc figure 7
 BINS = [8,8,8]
 features_to_compare = ["SNR Chang", "SNR Normal", "tSNR (Averaged Brain ROI)", "Displacement factor (std of Mutual information)"]
@@ -102,7 +102,7 @@ for dd,data in enumerate(All_Data):
             
             #Data_of_selected_feature = Data_of_selected_feature.sort_values("Dataset",ascending=False)
             # creating boxplots
-            if All_type[dd] == "anatomical":
+            if All_type[dd] == "anat":
                 plt.figure(figsize=(21.3*cm,3.527*cm),dpi=600)
             else:
                 plt.figure(figsize=(9.70*cm,3.527*cm),dpi=600)
@@ -131,7 +131,7 @@ for dd,data in enumerate(All_Data):
                 dots.set_offsets(dots.get_offsets() + np.array([0.12, 0]))
             ax.set_xlim(xlim)
             ax.set_ylim(ylim)
-            ax.legend_.remove()
+            #ax.legend_.remove()
             ax.locator_params(axis='y', nbins=BINS[dd])  # Set the number of ticks for the y-axis
             
             ax
@@ -166,6 +166,6 @@ for dd,data in enumerate(All_Data):
             
             ax.tick_params(axis='both', which='both', width=0.5,color='gray',length=2)
             plt.xticks(ha='right')
-            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+".svg"), format='svg', bbox_inches='tight',transparent=False)
-            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+".png"), format='png', bbox_inches='tight',transparent=False)
+            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"withoutAbdominal.svg"), format='svg', bbox_inches='tight',transparent=False)
+            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"withoutAbdominal.png"),dpi=300 ,format='png', bbox_inches='tight',transparent=False)
             plt.show()
