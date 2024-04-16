@@ -166,6 +166,6 @@ for dd,data in enumerate(All_Data):
             
             ax.tick_params(axis='both', which='both', width=0.5,color='gray',length=2)
             plt.xticks(ha='right')
-            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"withoutAbdominal.svg"), format='svg', bbox_inches='tight',transparent=False)
-            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"withoutAbdominal.png"),dpi=300 ,format='png', bbox_inches='tight',transparent=False)
+            #plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"withoutAbdominal.svg"), format='svg', bbox_inches='tight',transparent=False)
+            #plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"withoutAbdominal.png"),dpi=300 ,format='png', bbox_inches='tight',transparent=False)
             plt.show()
