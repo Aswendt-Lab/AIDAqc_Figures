@@ -11,11 +11,11 @@ rcParams['font.family'] = 'times new roman'
 rcParams['font.size'] = 8
 
 # Define file paths
-path = r"C:\Users\arefk\Desktop\Projects\testData\proc_data"
-csv_voting_path = r"C:\Users\arefk\Desktop\Projects\testData\proc_data2\QC\votings.csv"
+path = r"E:\Datalad\CRC_MRI_proc_data\proc_data"
+csv_voting_path = r"E:\Datalad\CRC_MRI_proc_data\docs\QC\votings.csv"
 
 # Read CSV file for voting
-df_voting = pd.read_csv(csv_voting_path, delimiter=";")
+df_voting = pd.read_csv(csv_voting_path)
 
 # Find DWI files
 SearchP = os.path.join(path, "**", "dwi", "*dwi.nii.gz")
@@ -24,8 +24,11 @@ BetFiles = glob.glob(SearchP, recursive=True)
 for bb in BetFiles:
     temp = os.path.dirname(bb)
     SearchFA = os.path.join(temp, "**", "fa_flipped.nii.gz")
-    FA = glob.glob(SearchFA, recursive=True)[0]
-
+    try:
+        FA = glob.glob(SearchFA, recursive=True)[0]
+    except IndexError:
+        continue
+    
     # Load DWI and FA images
     dwi_img = nib.load(bb)
     fa_img = nib.load(FA)
@@ -35,7 +38,7 @@ for bb in BetFiles:
     fa_data_rotated = np.rot90(fa_img.get_fdata(), k=-1)
 
     # Plot images
-    fig, axes = plt.subplots(1, 2)
+    fig, axes = plt.subplots(1, 2,dpi=300)
     axes[0].imshow(dwi_data_rotated[:, :, dwi_data_rotated.shape[-2] // 2+3, dwi_data_rotated.shape[-1] // 2], cmap='gray')
     axes[0].set_title('Original', fontweight='bold')
     axes[1].imshow(fa_data_rotated[:, :, fa_data_rotated.shape[-1] // 2+3], cmap='gray')
