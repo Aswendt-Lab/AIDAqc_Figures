@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import ttest_ind
 
 # Load CSV file into a DataFrame
-df = pd.read_csv(r"C:\Users\aswen\Desktop\TestingData\Aswendt_qc_data\proc_data\QC\calculated_features\caculated_features_func.csv")
+df = pd.read_csv(r"C:\Users\aswen\Desktop\TestingData\Aswendt_qc_data\proc_data\QC2\calculated_features\caculated_features_func.csv")
 
 # Filter data into two groups based on the presence of "mc.nii" in the FileAddress column
 group_with_mc = df[df['FileAddress'].str.contains('mc.nii', na=False)]
