@@ -44,11 +44,11 @@ for bb in BetFiles:
     fig.subplots_adjust(wspace=0)  # Adjust the horizontal space between subplots to 0
     
     axes[0].imshow(dwi_data_rotated[:, :, dwi_data_rotated.shape[-2] // 2+5, dwi_data_rotated.shape[-1] // 2], cmap='gray')
-    #axes[0].set_title('Original', fontweight='bold')
+    axes[0].text(0.5, 0.05, 'DWI', color='white', fontweight='bold', ha='center', transform=axes[0].transAxes)
     axes[0].axis('off')  # Turn off axes
     
     axes[1].imshow(fa_data_rotated[:, :, fa_data_rotated.shape[-1] // 2+5], cmap='gray')
-    #axes[1].set_title('FA Map', fontweight='bold')
+    axes[1].text(0.5, 0.05, 'FA Map', color='white', fontweight='bold', ha='center', transform=axes[1].transAxes)
     axes[1].axis('off')  # Turn off axes
     
     # Find corresponding entry in CSV_voting
@@ -58,8 +58,7 @@ for bb in BetFiles:
         axes[0].text(5, 15, f'Voting Outliers: {voting_value}', color='red', fontweight='bold')
     else:
         voting_value = 0
-        axes[0].text(5, 15, f'Voting Outliers: {voting_value}', color='blue', fontweight='bold')
+        axes[0].text(5, 15, f'Voting Outliers: {voting_value}', color='white', fontweight='bold')
     
     plt.savefig(os.path.join(out_path, os.path.basename(bb).replace(".nii.gz", "").replace("Underscore", "_") + ".svg"), transparent=True, bbox_inches='tight')
     plt.show()
-
