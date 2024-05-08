@@ -11,17 +11,17 @@ rcParams['font.family'] = 'times new roman'
 rcParams['font.size'] = 8
 
 # Define file paths
-path = r"C:\Users\arefk\Desktop\Projects\testData\proc_data"
-csv_voting_path = r"C:\Users\arefk\Desktop\Projects\testData\proc_data2\QC\votings.csv"
+path = r"C:\Users\aswen\Desktop\TestingData\Aswendt_qc_rsfmri_plot\proc_data"
+csv_voting_path = r"C:\Users\aswen\Desktop\TestingData\Aswendt_qc_rsfmri_plot\QC\votings.csv"
 
 # Function to read CSV files and store them in a dictionary
 script_dir = os.path.dirname(__file__)  # Use this line if running from a script file
-out_path = os.path.join(script_dir, '..', 'figures', 'supplement9')
+out_path = os.path.join(script_dir, '..', 'figures', 'supplement_figure_7')
 if not os.path.exists(out_path):
     os.mkdir(out_path)
 
 # Read CSV file for voting
-df_voting = pd.read_csv(csv_voting_path, delimiter=";")
+df_voting = pd.read_csv(csv_voting_path, delimiter=",")
 
 # Find DWI files
 SearchP = os.path.join(path, "**", "func", "*EPI.nii.gz")
@@ -78,11 +78,11 @@ for bb in BetFiles:
         ax.set_yticks([])  # Remove y ticks
         
     # Save image plots
-    #plt.show()
-    plt.tight_layout()
+   
+    #plt.tight_layout()
     plt.savefig(os.path.join(out_path, os.path.basename(bb).replace('.nii.gz', '_image_plot.svg')),transparent=True, format='svg')
-    plt.close('all')
-    
+    #plt.close('all')
+    plt.show()
     # Third row: Time course plot
     time_points = dwi_data.shape[-1] 
     selected_voxels = [485, 2485, 353, 2353, 985, 2985, 329, 2329, 198, 2198, 1080, 3080]
@@ -102,8 +102,8 @@ for bb in BetFiles:
     ax.set_ylabel('Average Intensity')
     ax.spines['top'].set_visible(False)  # Drop upper frame
     ax.spines['right'].set_visible(False)  # Drop right frame
-    plt.tight_layout()
+    #plt.tight_layout()
     
     # Save time course plots
-    plt.savefig(os.path.join(out_path, os.path.basename(bb).replace('.nii.gz', '_time_course_plot.svg')),transparent=True, format='svg')
+    #plt.savefig(os.path.join(out_path, os.path.basename(bb).replace('.nii.gz', '_time_course_plot.png')),transparent=True, format='png')
     plt.close('all')
