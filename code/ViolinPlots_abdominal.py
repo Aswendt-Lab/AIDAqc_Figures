@@ -107,7 +107,7 @@ for dd,data in enumerate(All_Data):
                 
             sns.set_style('ticks')
             sns.set(font='Times New Roman',style=None)  # Set font to Times New Roman and font size to 9
-            palette = 'Set2'
+            palette = 'Set1'
             ax = sns.violinplot(x="Dataset", y=feature, data=Data_of_selected_feature, hue="Dataset", dodge=False,
                                 palette=palette,
                                 scale="width", inner=None,linewidth=1)
@@ -164,6 +164,6 @@ for dd,data in enumerate(All_Data):
             
             ax.tick_params(axis='both', which='both', width=0.5,color='gray',length=2)
             plt.xticks(ha='right')
-            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"Abdominal.svg"), format='svg', bbox_inches='tight',transparent=False)
-            plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"Abdominal.png"),dpi=300 ,format='png', bbox_inches='tight',transparent=False)
+            #plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"Abdominal.svg"), format='svg', bbox_inches='tight',transparent=False)
+            #plt.savefig(os.path.join(out_path,feature+"_"+All_type[dd]+"Abdominal.png"),dpi=300 ,format='png', bbox_inches='tight',transparent=False)
             plt.show()

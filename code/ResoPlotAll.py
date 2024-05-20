@@ -85,7 +85,7 @@ for i, data in enumerate(All_Data):
                 Data_of_selected_feature.loc[Data_of_selected_feature["Dataset"] == "94_m_Va", Data_of_selected_feature.columns[0]] /= 20
               
             sns.set_style('ticks')
-            sns.set(font='Times New Roman', font_scale=0.9,style=None)  
+            sns.set(font='Times New Roman', font_scale=0.9,style=None)
             palette = 'Set2'
             ax = sns.barplot(x="Dataset", y=feature, data=Data_of_selected_feature, ci=None, palette=palette, ax=axes[i, j])
             ax.set_xlabel('')
