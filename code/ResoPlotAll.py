@@ -37,6 +37,8 @@ anatomical_data = read_csv_files(anatomical_files)
 structural_data = read_csv_files(structural_files)
 functional_data = read_csv_files(functional_files)
 
+
+
 All_Data = [anatomical_data, structural_data, functional_data]
 All_type = ["anat", "diff", "func"]
 
@@ -76,7 +78,12 @@ for i, data in enumerate(All_Data):
             elif feature == "Displacement factor (std of Mutual information)":
                 Data_of_selected_feature.rename(columns={"Displacement factor (std of Mutual information)": "Motion severity (A.U)"}, inplace=True)
                 feature = "Motion severity (A.U)"
-            
+                        
+            # Assuming "Data_of_selected_feature" is your DataFrame
+            if "94_m_Va" in Data_of_selected_feature["Dataset"].values and All_type[i]=="diff":
+                # If the condition is met, select the rows where the condition is true and divide the first column by 20
+                Data_of_selected_feature.loc[Data_of_selected_feature["Dataset"] == "94_m_Va", Data_of_selected_feature.columns[0]] /= 20
+              
             sns.set_style('ticks')
             sns.set(font='Times New Roman', font_scale=0.9,style=None)  
             palette = 'Set2'
