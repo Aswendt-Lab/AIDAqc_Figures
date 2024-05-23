@@ -25,7 +25,7 @@ def compare_and_plot(data, column_name, group_column):
     plt.tight_layout()
     plt.show()
 
-Path = r"C:\Users\arefk\Desktop\Projects\AIDAqcOutput_of_all_Datasets"
+Path = r"C:\Users\aswen\Desktop\Code\AIDAqcOutput_of_all_Datasets"
 
 anatomical_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_anat.csv"), recursive=True)
 structural_files = glob.glob(os.path.join(Path,"*/*/*caculated_features_diff.csv"), recursive=True)
@@ -79,11 +79,7 @@ for i, data in enumerate(All_Data):
                 Data_of_selected_feature.rename(columns={"Displacement factor (std of Mutual information)": "Motion severity (A.U)"}, inplace=True)
                 feature = "Motion severity (A.U)"
                         
-            # Assuming "Data_of_selected_feature" is your DataFrame
-            if "94_m_Va" in Data_of_selected_feature["Dataset"].values and All_type[i]=="diff":
-                # If the condition is met, select the rows where the condition is true and divide the first column by 20
-                Data_of_selected_feature.loc[Data_of_selected_feature["Dataset"] == "94_m_Va", Data_of_selected_feature.columns[0]] /= 20
-              
+            
             sns.set_style('ticks')
             sns.set(font='Times New Roman', font_scale=0.9,style=None)
             palette = 'Set2'
@@ -101,7 +97,7 @@ for i, data in enumerate(All_Data):
 
 
 #%%
-output_path = r"C:\Users\arefk\Desktop\Projects\AIDAqc_Figures\figures\PaperFigures\AswenSupplement1"
+output_path = r"C:\Users\aswen\Desktop\Code\AIDAqc_Figures\figures\PaperFigures\AswenSupplement1"
 
 # Save as SVG
 plt.savefig(output_path + ".svg", format='svg')
