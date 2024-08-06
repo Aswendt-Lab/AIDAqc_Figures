@@ -59,7 +59,8 @@ for bb in BetFiles:
         ax.set_yticks([])  # Remove y ticks
         
         # Find corresponding entry in CSV_voting
-        df_bb_voting = df_voting[df_voting['Pathes'] == bb]
+        bbbase = os.path.basename(bb).split("_")[0].replace("sub-", "")
+        df_bb_voting = df_voting[df_voting['Pathes'].str.contains(bbbase)]
         if not df_bb_voting.empty and i == 0:
             voting_value = df_bb_voting['Voting outliers (from 5)'].values[0]
             if voting_value > 1:
